@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Allied Upliftment - Empowering Through Education</title>
+    <style>
+        /* Modern Gradient Theme */
+        :root {
+            --primary: #10b981;
+            --primary-dark: #059669;
+            --primary-light: #d1fae5;
+            --dark: #111827;
+            --dark-light: #1f2937;
+            --light: #f9fafb;
+            --gray: #6b7280;
+            --white: #ffffff;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        body {
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Improved Background Layers */
+        .bg-layer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+        }
+        
+        .bg-image {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--dark-light) 100%);
+            z-index: -2;
+        }
+        
+        .bg-blur {
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            background-color: rgba(17, 24, 39, 0.85);
+            z-index: -1;
+        }
+        
+        /* Content Container */
+        .content-container {
+            background-color: rgba(31, 41, 55, 0.7);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin: 1rem 0;
+        }
+        
+        /* Typography */
+        h1, h2, h3 {
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--white);
+            text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+        }
+        
+        h1 { font-size: 3rem; }
+        h2 { font-size: 2.25rem; }
+        h3 { font-size: 1.5rem; }
+        
+        p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        }
+        
+        /* Layout */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+        }
+        
+        section {
+            min-height: 100vh;
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.75rem;
+            border-radius: 0.375rem;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            border: none;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--white);
+            box-shadow: 0 4px 6px -1px rgba(16, 185, 129, 0.3);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.4);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+        
+        .btn-seller {
+            background-color: transparent;
+            border: 2px solid var(--white);
+            color: var(--white);
+            margin-top: 1rem;
+        }
+        
+        .btn-seller:hover {
+            background-color: var(--white);
+            color: var(--dark);
+        }
+        
+        .btn-teacher {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            margin-top: 1rem;
+        }
+        
+        .btn-teacher:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.5rem 0;
+            transition: all 0.3s ease;
+            background-color: rgba(17, 24, 39, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        
+        .logo-img {
+            height: 40px;
+        }
+        
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--white);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            font-weight: 600;
+            color: var(--white);
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        #hero {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            padding-top: 8rem;
+        }
+        
+        #hero .content-container {
+            background-color: rgba(31, 41, 55, 0.8);
+        }
+        
+        #hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+        
+        #hero p {
+            font-size: 1.25rem;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+        
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        /* About Section */
+        #about {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .about-image {
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+            height: 450px;
+            background-image: url('group_1.png');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 0.5rem;
+            backdrop-filter: blur(5px);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.9);
+        }
+
+        /* Adjusted Section Margins */
+        #about p:first-of-type,
+        #courses .section-header p,
+        #marketplace .section-header p {
+            margin-top: 40px; /* Reduced from 3rem/4rem */
+        }
+        
+        /* Courses Section */
+        #courses {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-header h2 {
+            margin-bottom: 1rem;
+        }
+        
+        .course-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .course-card {
+            background: rgba(31, 41, 55, 0.8);
+            border-radius: 0.75rem;
+            padding: 2.5rem 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border-top: 4px solid var(--primary);
+            backdrop-filter: blur(4px);
+        }
+        
+        .course-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+        
+        .course-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+        
+        /* Marketplace Section */
+        #marketplace {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .product-card {
+            background: rgba(31, 41, 55, 0.8);
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(4px);
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+        }
+        
+        .product-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-info h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-category {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .product-price {
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--white);
+        }
+        
+        .add-to-cart {
+            width: 100%;
+            margin-top: 1rem;
+            background-color: var(--primary-dark);
+        }
+        
+        .add-to-cart:hover {
+            background-color: var(--primary);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            padding: 5rem 0 2rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-column h3 {
+            color: var(--white);
+            margin-bottom: 1.5rem;
+            font-size: 1.25rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .footer-column ul li a {
+            color: #d1d5db;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: var(--primary);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #9ca3af;
+            font-size: 0.875rem;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-image {
+                order: -1;
+                height: 400px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            section {
+                padding: 4rem 0;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .stats {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .content-container {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Background Layers -->
+    <div class="bg-layer bg-image"></div>
+    <div class="bg-layer bg-blur"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container nav-container">
+            <a href="#hero" class="logo">
+                <img src="allied_upliftment_logo.png" alt="Allied Upliftment Logo" class="logo-img">
+                <span class="logo-text">Allied Upliftment</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#hero">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#courses">Education</a></li>
+                <li><a href="#marketplace">Marketplace</a></li>
+                <li><a href="sign_up.html" class="btn btn-primary">Sign Up</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="container">
+            <div class="content-container fade-in" style="animation-delay: 0.1s;">
+                <h1>Empowering Underprivileged Women & Children</h1>
+                <p>Providing education and economic opportunities to marginalized communities through innovative programs and platforms.</p>
+                <div class="hero-btns">
+                    <a href="#courses" class="btn btn-primary">Explore Programs</a>
+                    <a href="#marketplace" class="btn btn-outline">Shop Products</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="content-container">
+                <div class="about-content">
+                    <div class="about-text fade-in" style="animation-delay: 0.2s;">
+                        <h2>Our Mission</h2>
+                        <p>We are committed to breaking the cycle of poverty by providing education and vocational training to underprivileged women and children in marginalized communities.</p>
+                        <p>Our innovative marketplace platform empowers women entrepreneurs by giving them access to global markets for their handmade products and crafts.</p>
+                        
+                        <div class="stats">
+                            <div class="stat-item fade-in" style="animation-delay: 0.3s;">
+                                <div class="stat-number">5,000+</div>
+                                <div class="stat-label">Women Empowered</div>
+                            </div>
+                            <div class="stat-item fade-in" style="animation-delay: 0.4s;">
+                                <div class="stat-number">10,000+</div>
+                                <div class="stat-label">Children Educated</div>
+                            </div>
+                            <div class="stat-item fade-in" style="animation-delay: 0.5s;">
+                                <div class="stat-number">200+</div>
+                                <div class="stat-label">Communities Reached</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-image fade-in" style="animation-delay: 0.3s;"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses">
+        <div class="container">
+            <div class="content-container">
+                <div class="section-header fade-in" style="animation-delay: 0.1s;">
+                    <h2>Education Programs</h2>
+                    <p>Transformative learning experiences designed for those overlooked by traditional systems</p>
+                </div>
+                <div class="course-cards">
+                    <div class="course-card fade-in" style="animation-delay: 0.2s;">
+                        <h3>Basic Literacy</h3>
+                        <p>Learn to read and write in your native language with beginner friendly lessons designed for adult learners.</p>
+                        <a href="#" class="btn btn-primary">Learn More</a>
+                    </div>
+                    <div class="course-card fade-in" style="animation-delay: 0.3s;">
+                        <h3>Digital Skills</h3>
+                        <p>Essential computer and internet skills training to bridge the digital divide in underserved communities.</p>
+                        <a href="#" class="btn btn-primary">Learn More</a>
+                    </div>
+                    <div class="course-card fade-in" style="animation-delay: 0.4s;">
+                        <h3>Vocational Training</h3>
+                        <p>Practical skills in stitching, embroidery, and traditional crafts to generate sustainable income.</p>
+                        <a href="#" class="btn btn-primary">Learn More</a>
+                    </div>
+                    <div class="course-card fade-in" style="animation-delay: 0.5s;">
+                        <h3>Financial Literacy</h3>
+                        <p>Money management, savings, and basic business skills to help women achieve economic independence.</p>
+                        <a href="#" class="btn btn-primary">Learn More</a>
+                    </div>
+                    <div class="course-card fade-in" style="animation-delay: 0.6s;">
+                        <h3>Health & Nutrition</h3>
+                        <p>Essential health education, hygiene practices, and nutrition guidance for women and families.</p>
+                        <a href="#" class="btn btn-primary">Learn More</a>
+                    </div>
+                    <div class="course-card fade-in" style="animation-delay: 0.7s;">
+                        <h3>Entrepreneurship</h3>
+                        <p>Business planning, marketing, and sales training to help women launch and grow small businesses.</p>
+                        <a href="#" class="btn btn-primary">Learn More</a>
+                    </div>
+                </div>
+                <div class="text-center fade-in" style="animation-delay: 0.8s;">
+                    <center><p>Want to teach children? Join our team of dedicated educators</p>
+                    <a href="mentor.html" class="btn btn-seller">Join as a Mentor</a></center>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marketplace Section -->
+    <section id="marketplace">
+        <div class="container">
+            <div class="content-container">
+                <div class="section-header fade-in" style="animation-delay: 0.1s;">
+                    <h2>Women's Marketplace</h2>
+                    <p>Support talented artisans by purchasing their handmade products</p>
+                </div>
+                <div class="product-grid">
+                    <div class="product-card fade-in" style="animation-delay: 0.2s;">
+                        <img src="embroided_shawl.png" alt="Embroidered Shawl" class="product-img">
+                        <div class="product-info">
+                            <h3>Embroidered Shawl</h3>
+                            <div class="product-category">Handmade Textiles</div>
+                            <div class="product-price">₹1,250</div>
+                            <button class="btn add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card fade-in" style="animation-delay: 0.3s;">
+                        <img src="clay_pottery.png" alt="Clay Pottery Set" class="product-img">
+                        <div class="product-info">
+                            <h3>Clay Pottery Set</h3>
+                            <div class="product-category">Handcrafted Pottery</div>
+                            <div class="product-price">₹2,800</div>
+                            <button class="btn add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card fade-in" style="animation-delay: 0.4s;">
+                        <img src="beaded_jewel.png" alt="Beaded Jewelry" class="product-img">
+                        <div class="product-info">
+                            <h3>Beaded Jewelry Set</h3>
+                            <div class="product-category">Handmade Accessories</div>
+                            <div class="product-price">₹950</div>
+                            <button class="btn add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card fade-in" style="animation-delay: 0.5s;">
+                        <img src="woven_storage.png" alt="Woven Basket" class="product-img">
+                        <div class="product-info">
+                            <h3>Woven Storage Basket</h3>
+                            <div class="product-category">Home Decor</div>
+                            <div class="product-price">₹1,750</div>
+                            <button class="btn add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card fade-in" style="animation-delay: 0.6s;">
+                        <img src="blockprint_scarf.png" alt="Block Print Scarf" class="product-img">
+                        <div class="product-info">
+                            <h3>Block Print Scarf</h3>
+                            <div class="product-category">Fashion Accessories</div>
+                            <div class="product-price">₹1,100</div>
+                            <button class="btn add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card fade-in" style="animation-delay: 0.7s;">
+                        <img src="soaps.png" alt="Handmade Soaps" class="product-img">
+                        <div class="product-info">
+                            <h3>Handmade Soaps</h3>
+                            <div class="product-category">Personal Care</div>
+                            <div class="product-price">₹650 (Set of 3)</div>
+                            <button class="btn add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card fade-in" style="animation-delay: 0.8s;">
+                        <img src="https://images.unsplash.com/photo-1596464716127-f2a82984de30?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Wooden Toys" class="product-img">
+                        <div class="product-info">
+                            <h3>Wooden Toys</h3>
+                            <div class="product-category">Children's Items</div>
+                            <div class="product-price">₹1,450 (Set of 5)</div>
+                            <button class="btn add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card fade-in" style="animation-delay: 0.9s;">
+                        <img src="organic_spices.png" alt="Organic Spices" class="product-img">
+                        <div class="product-info">
+                            <h3>Spice Collection</h3>
+                            <div class="product-category">Food Products</div>
+                            <div class="product-price">₹1,850 (Set of 6)</div>
+                            <button class="btn add-to-cart">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center fade-in" style="animation-delay: 1s;">
+                    <a href="#" class="btn btn-primary">View All Products</a>
+                    <div style="margin-top: 2rem;">
+                        <center><p>Want to start your business here?</p>
+                        <a href="seller.html" class="btn btn-seller">Join as a Seller</a></center>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <div class="logo">
+                        <img src="allied_upliftment_logo.png" alt="Allied Upliftment Logo" class="logo-img" style="height: 50px;">
+                        <span class="logo-text">Allied Upliftment</span>
+                    </div>
+                    <p style="margin-top: 1rem; color: rgba(255,255,255,0.7);">Empowering women and children through education and economic opportunities.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Programs</h3>
+                    <ul>
+                        <li><a href="#">Basic Literacy</a></li>
+                        <li><a href="#">Digital Skills</a></li>
+                        <li><a href="#">Vocational Training</a></li>
+                        <li><a href="#">Entrepreneurship</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Marketplace</h3>
+                    <ul>
+                        <li><a href="#">All Products</a></li>
+                        <li><a href="#">Textiles</a></li>
+                        <li><a href="#">Pottery</a></li>
+                        <li><a href="#">Jewelry</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Get Involved</h3>
+                    <ul>
+                        <li><a href="#">Teach With Us</a></li>
+                        <li><a href="#">Sell With Us</a></li>
+                        <li><a href="#">Volunteer</a></li>
+                        <li><a href="#">Donate</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Allied Upliftment. All rights reserved.</p>
+                <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Accessibility</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Update URL without refreshing
+                    if (history.pushState) {
+                        history.pushState(null, null, targetId);
+                    } else {
+                        location.hash = targetId;
+                    }
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.style.padding = '1rem 0';
+                nav.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.2)';
+            } else {
+                nav.style.padding = '1.5rem 0';
+                nav.style.boxShadow = 'none';
+            }
+        });
+
+        // Scroll animations
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInOnScroll = function() {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 100) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', fadeInOnScroll);
+        window.addEventListener('load', fadeInOnScroll);
+    </script>
+</body>
+</html>

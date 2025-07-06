@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Become a Seller | Women's Marketplace</title>
+    <style>
+        :root {
+            --primary: #2E8B57;
+            --primary-dark: #26734A;
+            --text: #333333;
+            --text-light: #555555;
+            --border: #E0E0E0;
+            --bg: rgba(134, 196, 134, 0.95);
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        h1 {
+            font-size: 2.3rem;
+            color: black;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            color: var(--text-light);
+            font-size: 1.1rem;
+        }
+        
+        .form-container {
+            background: white;
+            border-radius: 10px;
+            padding: 40px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 25px;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text);
+        }
+        
+        input, select, textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 1rem;
+        }
+        
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: block;
+            margin: 30px auto 0;
+            width: 200px;
+        }
+        
+        .submit-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+        
+        .file-upload {
+            border: 1px dashed var(--border);
+            padding: 20px;
+            text-align: center;
+            border-radius: 6px;
+        }
+        
+        .required:after {
+            content: " *";
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Become a Seller</h1>
+            <p class="subtitle">Showcase your handmade products to our community</p>
+        </header>
+        
+        <div class="form-container">
+            <form id="sellerForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fullName" class="required">Full Name</label>
+                        <input type="text" id="fullName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="required">Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="qualification" class="required">Artisan Qualification</label>
+                    <input type="text" id="qualification" required placeholder="Your skills, training, or certifications">
+                </div>
+                
+                <div class="form-group">
+                    <label for="products" class="required">Products of Interest</label>
+                    <textarea id="products" required placeholder="Describe the types of products you create"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label class="required">Identity Proof</label>
+                    <div class="file-upload">
+                        <p>Upload Artisan/Seller Identity Proof (PDF/JPEG/PNG)</p>
+                        <input type="file" id="identityProof" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="whyPlatform" class="required">Why do you choose this platform?</label>
+                    <textarea id="whyPlatform" required placeholder="Tell us why you want to sell with us"></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="portfolio">Portfolio Links (Optional)</label>
+                    <input type="text" id="portfolio" placeholder="Website, Instagram, Etsy, etc.">
+                </div>
+                
+                <button type="submit" class="submit-btn">Join as Seller</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
